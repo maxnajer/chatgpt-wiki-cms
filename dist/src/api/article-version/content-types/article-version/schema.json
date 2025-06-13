@@ -1,0 +1,47 @@
+{
+    "kind": "collectionType",
+    "collectionName": "article_versions",
+    "info": {
+        "singularName": "article-version",
+        "pluralName": "article-versions",
+        "displayName": "ArticleVersion"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "article": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::article.article",
+            "inversedBy": "article_versions"
+        },
+        "content": {
+            "type": "blocks"
+        },
+        "author": {
+            "type": "string"
+        },
+        "timestamp": {
+            "type": "datetime",
+            "default": "2025-06-13T06:00:58.799Z"
+        },
+        "score": {
+            "type": "integer",
+            "default": 0
+        },
+        "comments": {
+            "type": "json"
+        },
+        "currentStatus": {
+            "type": "enumeration",
+            "default": "pending",
+            "enum": [
+                "pending",
+                "approved",
+                "rejected"
+            ]
+        }
+    }
+}

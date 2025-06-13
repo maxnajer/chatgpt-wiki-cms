@@ -1,0 +1,52 @@
+{
+    "kind": "collectionType",
+    "collectionName": "articles",
+    "info": {
+        "singularName": "article",
+        "pluralName": "articles",
+        "displayName": "Article"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string",
+            "maxLength": 100,
+            "required": true,
+            "unique": true
+        },
+        "slug": {
+            "type": "uid",
+            "targetField": "title"
+        },
+        "content": {
+            "type": "richtext",
+            "required": true
+        },
+        "images": {
+            "type": "media",
+            "multiple": true,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "references": {
+            "type": "json"
+        },
+        "currentScore": {
+            "type": "integer",
+            "default": 0
+        },
+        "article_versions": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::article-version.article-version",
+            "mappedBy": "article"
+        }
+    }
+}
